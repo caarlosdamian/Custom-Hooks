@@ -5,12 +5,19 @@ import { Table, Button } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
 const Tables = () => {
   const { data } = useFetch();
+  const [modalOpen, setModalOpen] = useState(false);
   const [pageNumber, setPageNumber] = useState(0);
-  const catsPerPage = 10;
+  const catsPerPage = 5;
   const pagesVisited = pageNumber * catsPerPage;
   const pageCount = Math.ceil(data.length / catsPerPage);
   const changePage = ({ selected }) => {
     setPageNumber(selected);
+  };
+
+  const checkImage = (value) => {
+    if (value.image === undefined) {
+      return value.name;
+    } else return value.image.url;
   };
   return (
     <>
@@ -32,7 +39,7 @@ const Tables = () => {
                   <td key={key}>{value.name}</td>
                   <td>{value.temperament}</td>
                   <td>
-                    <Button variant="outline-primary">Photo</Button>
+                    <img src={checkImage(value)} alt="missing img"></img>
                   </td>
                 </tr>
               ))}

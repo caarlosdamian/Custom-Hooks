@@ -1,6 +1,11 @@
+.table{
+  margin:50px 20px;
+  width: 85%;
+}
 img{
-  height: 100px;
-  width: 120px;
+  height: 150px;
+  width: 200px;
+  border-radius: 10px;
 }
 .paginationButtons{
   display: flex;
